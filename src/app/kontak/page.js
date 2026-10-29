@@ -62,7 +62,7 @@ export default function Kontak () {
                         <div>
                             <button
                                 type="submit"
-                                className="rounded-lg bg-utama px-10 py-3 text-sm font-semibold text-white transition hover:opacity-90"
+                                className="rounded-lg bg-red-800 px-10 py-3 text-sm font-semibold text-white transition hover:opacity-90"
                             >
                                 Kirim Pesan
                             </button>
