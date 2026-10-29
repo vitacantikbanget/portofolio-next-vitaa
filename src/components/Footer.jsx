@@ -1,7 +1,8 @@
-export default function ({}) {
+export default function Footer() {
+    const tahun = new Date().getFullYear();
     return (
-        <div className="w-full flex-1 gap-5 bg-utama py-4 text-sm text-center text-white">
-            Dibuat oleh @vitamungil manual !!
-        </div>
+        <footer className="mt-auto bg-utama p-6 text-center text-latar">
+            <p>&copy;(tahun)Desvita Putri. Dibuat dengan Next.Js di kelas industri UBIG.</p>
+        </footer>
     )
 }
