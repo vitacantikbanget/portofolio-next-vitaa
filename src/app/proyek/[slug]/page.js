@@ -3,6 +3,15 @@ import Link from "next/link";
 import { proyek } from "@/data/proyek";
 import { notFound } from "next/navigation";
 
+export async function generateMetaData ( {params} ) {
+    const { slug } = await params;
+    const item = proyek.find((p) => p.slug === slug);
+
+if (!item) {
+    return { title: "Proyek tidak ditemukan"};
+}
+return { title: item.judul, description: item.deskripsi };
+}
 export default async function DetailProyek({ params }) {
     const { slug } = await params;
     const item = proyek.find((p) => p.slug === slug);
@@ -17,7 +26,7 @@ export default async function DetailProyek({ params }) {
             </Link>
             <h1 className="mt-2 text-3xl font-bold text-utama md:text-4xl">{item.judul}</h1>
             <p className="mt-2 text-gray-600">
-                {item.kategori} &middot; Dibuat di {item.minggu}
+                {item.kategori} &middot; Dibuat di kelas industri UBIG {item.minggu}
             </p>
             <Image
             src={item.gambar}

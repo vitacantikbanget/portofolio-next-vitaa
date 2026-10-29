@@ -14,8 +14,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Desvita Putri | Portofolio",
-  description: "Portofolio Desvita Putri, siswa SMK Negeri 1 Pasuruan calon Junior Web Developer di kelas industri UBIG",
+title: {
+default: "Desvita Putri | Portofolio",
+template: "%s | Desvita Putri Wulandari",
+},
+description: "Portofolio Desvita Putri Wulandari, siswa SMK Negeri 1 Pasuruan calon Junior Web Developer di kelas industri UBIG.",
 };
 
 export default function RootLayout({ children }) {
