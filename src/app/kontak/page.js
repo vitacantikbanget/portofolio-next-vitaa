@@ -1,94 +1,55 @@
-export default function Kontak () {
-    return (
-        <main className="mx-auto max-w-5xl px-4 py-10 gap-2">
-            <h1 className="text-3xl text-utama font-bold md:text-4xl ">
-                Kontak Saya
-            </h1>
-            <p className="mt-3 text-lg text-gray-700">Halaman ini akan berisi kontak</p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start mt-6">
-                <div className="bg-white border border-gray-300 rounded-xl p-6 md:col-span-2">
-                    <form className="space-y-4">
-                        <div>
-                            <label htmlFor="nama" className="block font-semibold">
-                                Nama lengkap
-                            </label>
-                            <input type="text" id="nama" name="nama" placeholder="Contoh: Budi Santoso" required className="mt-1 w-full rounded-lg border border-gray-300 bg-white p-2" />
-                        </div>
-                        <div>
-                            <label htmlFor="email" className="block font-semibold">
-                                Email
-                            </label>
-                            <input type="email" id="email" name="email" placeholder="Contoh: BudiSantoso@gmail.com" required className="mt-1 w-full rounded-lg border border-gray-300 bg-white p-2" />
-                        </div>
-                        <div>
-                            <label htmlFor="nomorhp" className="block font-semibold">
-                                Nomor HP
-                            </label>
-                            <input type="number" id="nomorhp" name="nomorhp" placeholder="Contoh: 085783029387" required className="mt-1 w-full rounded-lg border border-gray-300 bg-white p-2" />
-                        </div>
-                        <div>
-                            <label htmlFor="keperluan" className="block font-semibold">
-                                Keperluan
-                            </label>
-                            <select
-                                id="keperluan"
-                                name="keperluan"
-                                required
-                                defaultValue=""
-                                className="mt-1 w-full rounded-lg border border-gray-300 bg-white p-2"
-                            >
-                                <option value="" disabled>
-                                    -- Pilih keperluan --
-                                </option>
-                                <option value="kolaborasi">Kolaborasi / Kerjasama Proyek</option>
-                                <option value="magang">Tawaran Magang / PKL</option>
-                                <option value="pertanyaan">Pertanyaan / Diskusi</option>
-                                <option value="lainnya">Lainnya</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label htmlFor="pesan" className="block font-semibold">
-                                pesan
-                            </label>
-                            <textarea
-                                id="pesan"
-                                name="pesan"
-                                rows="4"
-                                placeholder="Tulis pesanmu di sini"
-                                required
-                                className="mt-1 w-full rounded-lg border border-gray-300 bg-white p-2"
-                            ></textarea>
-                        </div>
-                        <div>
-                            <button
-                                type="submit"
-                                className="rounded-lg bg-red-800 px-10 py-3 text-sm font-semibold text-white transition hover:opacity-90"
-                            >
-                                Kirim Pesan
-                            </button>
-                        </div>
-                    </form>
-                </div>
-                <div>
-                    <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-100 min-h-[360px]">
-                        <h1 className="text-2xl text-utama font-semibold">Temui saya di </h1>
-                        <a
-                            href="https://github.com/vitacantikbanget"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-red-800 mt-2 inline-block font-semibold hover:underline"
-                        >
-                            Github
-                        </a>
-                        <a
-                            href="mailto:desvitaputri2712@gmail.com"
-                            className="text-red-800 font-semibold mt-1 block hover:underline"
-                        >
-                            desvitaputri2712@gmail.com
-                        </a>
-                    </div>
-                </div>
+import FormKontak from "@/components/FormKontak";
+
+export const metadata = {
+  title: "Kontak",
+  description: "Hubungi Desvita Putri untuk kolaborasi atau pertanyaan.",
+};
+
+export default function Kontak() {
+  return (
+    <main className="mx-auto w-full max-w-5xl px-4 py-10">
+      <h1 className="text-3xl font-bold text-utama dark:text-sky-200 md:text-4xl">
+        Hubungi Saya
+      </h1>
+      <p className="mt-3 text-lg text-gray-700 dark:text-gray-300">
+        Punya pertanyaan atau ingin bekerja sama? Isi form berikut.
+      </p>
+
+      <div className="mt-8 grid gap-6 md:grid-cols-3">
+        <section className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 shadow-sm md:col-span-2">
+          <FormKontak />
+        </section>
+
+        <div>
+          <div className="rounded-xl border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 shadow-sm min-h-[360px]">
+            <h2 className="text-2xl font-semibold text-utama dark:text-sky-200">
+              Temukan Saya di
+            </h2>
+            <div className="mt-4 space-y-3">
+              <div>
+                <span className="block text-sm text-gray-500 dark:text-gray-400">GitHub</span>
+                <a
+                  href="https://github.com/vitacantikbanget"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-aksen dark:text-red-300 hover:underline"
+                >
+                  GitHub
+                </a>
+              </div>
+              <div>
+                <span className="block text-sm text-gray-500 dark:text-gray-400">Email</span>
+                <a
+                  href="mailto:desvitaputri2712@gmail.com"
+                  className="font-semibold text-aksen dark:text-red-300 hover:underline"
+                >
+                  desvitaputri2712@gmail.com
+                </a>
+              </div>
             </div>
-        </main>
-    )
+          </div>
+        </div>
+      </div>
+    </main>
+  );
 }

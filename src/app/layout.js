@@ -14,11 +14,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-title: {
-default: "Desvita Putri | Portofolio",
-template: "%s | Desvita Putri Wulandari",
-},
-description: "Portofolio Desvita Putri Wulandari, siswa SMK Negeri 1 Pasuruan calon Junior Web Developer di kelas industri UBIG.",
+  title: {
+    default: "Desvita Putri | Portofolio",
+    template: "%s | Desvita Putri Wulandari",
+  },
+  description:
+    "Portofolio Desvita Putri Wulandari, siswa SMK Negeri 1 Pasuruan calon Junior Web Developer di kelas industri UBIG.",
 };
 
 export default function RootLayout({ children }) {
@@ -27,11 +28,11 @@ export default function RootLayout({ children }) {
       lang="id"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-latar text-gray-800">
+      <body className="min-h-full flex flex-col bg-latar dark:bg-gray-900 text-gray-800 dark:text-gray-100">
         <Navbar />
         {children}
         <Footer />
-        </body>
+      </body>
     </html>
   );
 }

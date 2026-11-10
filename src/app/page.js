@@ -23,7 +23,9 @@ export default function Home() {
       />
 
       <section className="mt-10">
-        <h2 className="mb-4 text-2xl font-bold text-utama">Keahlian</h2>
+        <h2 className="mb-4 text-2xl font-bold text-utama dark:text-sky-200">
+          Keahlian
+        </h2>
         <div className="grid gap-4 md:grid-cols-3">
           {skills.map((skill) => (
             <SkillCard key={skill.nama} nama={skill.nama} level={skill.level} />
@@ -32,7 +34,9 @@ export default function Home() {
       </section>
 
       <section className="mt-10">
-        <h2 className="mb-4 text-2xl font-bold text-utama">Proyek Terbaru</h2>
+        <h2 className="mb-4 text-2xl font-bold text-utama dark:text-sky-200">
+          Proyek Terbaru
+        </h2>
         <div className="grid gap-6 md:grid-cols-3">
           {proyekTerbaru.map((item) => (
             <ProyekCard key={item.slug} proyek={item} />
@@ -40,7 +44,7 @@ export default function Home() {
         </div>
         <Link
           href="/proyek"
-          className="mt-6 inline-block rounded-lg bg-utama px-5 py-2 font-semibold text-white"
+          className="mt-6 inline-block rounded-lg bg-utama dark:bg-sky-200 px-5 py-2 font-semibold text-white dark:text-gray-900 transition hover:opacity-90"
         >
           Lihat semua proyek
         </Link>
