@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
 
 const kelasInput =
-  "mt-1 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 p-2";
+  "mt-1 w-full rounded-lg border border-input bg-card p-2";
 
 export default function FormKontak() {
   const [nama, setNama] = useState("");
@@ -60,7 +61,7 @@ export default function FormKontak() {
           className={kelasInput}
         />
         {error.nama && (
-          <p className="mt-1 text-sm text-aksen dark:text-red-300">
+          <p className="mt-1 text-sm text-aksen">
             {error.nama}
           </p>
         )}
@@ -80,7 +81,7 @@ export default function FormKontak() {
           className={kelasInput}
         />
         {error.email && (
-          <p className="mt-1 text-sm text-aksen dark:text-red-300">
+          <p className="mt-1 text-sm text-aksen">
             {error.email}
           </p>
         )}
@@ -100,7 +101,7 @@ export default function FormKontak() {
           className={kelasInput}
         />
         {error.hp && (
-          <p className="mt-1 text-sm text-aksen dark:text-red-300">
+          <p className="mt-1 text-sm text-aksen">
             {error.hp}
           </p>
         )}
@@ -123,7 +124,7 @@ export default function FormKontak() {
           <option value="lainnya">Lainnya</option>
         </select>
         {error.keperluan && (
-          <p className="mt-1 text-sm text-aksen dark:text-red-300">
+          <p className="mt-1 text-sm text-aksen">
             {error.keperluan}
           </p>
         )}
@@ -143,22 +144,19 @@ export default function FormKontak() {
           className={kelasInput}
         ></textarea>
         {error.pesan && (
-          <p className="mt-1 text-sm text-aksen dark:text-red-300">
+          <p className="mt-1 text-sm text-aksen">
             {error.pesan}
           </p>
         )}
       </div>
 
       <div>
-        <button
-          type="submit"
-          className="rounded-lg bg-utama dark:bg-sky-200 px-5 py-2.5 font-semibold text-white dark:text-gray-900 transition hover:opacity-90"
-        >
+        <Button type="submit" size="lg">
           Kirim Pesan
-        </button>
+        </Button>
       </div>
 
-      <p className="text-xs text-gray-500 dark:text-gray-400">
+      <p className="text-xs text-muted-foreground">
         Form ini belum mengirim pesan. Pengiriman pesan diaktifkan di Minggu 13.
       </p>
     </form>

@@ -28,7 +28,7 @@ const jadwalList = [
 export default function Tentang() {
   return (
     <main className="mx-auto max-w-5xl px-4 py-10">
-      <h1 className="text-3xl font-bold text-utama dark:text-sky-200 md:text-4xl">
+      <h1 className="text-3xl font-bold text-primary md:text-4xl">
         Tentang Saya
       </h1>
 
@@ -50,7 +50,7 @@ export default function Tentang() {
       </div>
 
       <section className="mt-10">
-        <h2 className="text-2xl font-bold text-utama dark:text-sky-200 mb-3">
+        <h2 className="text-2xl font-bold text-primary mb-3">
           Jadwal Belajar
         </h2>
         <JadwalBelajar

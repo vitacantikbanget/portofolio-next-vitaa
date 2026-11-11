@@ -1,28 +1,34 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 
 export default function TombolTema() {
+  const [gelap, setGelap] = useState(false);
+
   useEffect(() => {
-    if (localStorage.getItem("tema") === "gelap") {
-      document.documentElement.classList.add("dark");
-    }
+    const timer = setTimeout(() => {
+      if (localStorage.getItem("tema") === "gelap") {
+        document.documentElement.classList.add("dark");
+        setGelap(true);
+      }
+    }, 0);
+    return () => clearTimeout(timer);
   }, []);
 
   function gantiTema() {
-    const gelap = document.documentElement.classList.toggle("dark");
-    localStorage.setItem("tema", gelap ? "gelap" : "terang");
+    const isDark = document.documentElement.classList.toggle("dark");
+    localStorage.setItem("tema", isDark ? "gelap" : "terang");
+    setGelap(isDark);
   }
 
   return (
-    <button
-      type="button"
+    <Button
+      variant="outline"
       onClick={gantiTema}
-      className="rounded-lg border border-white px-3 py-1 text-sm font-semibold text-white hover:border-aksen hover:bg-aksen"
+      className="border-white bg-transparent text-white hover:bg-aksen hover:text-white"
     >
-      <span className="dark:hidden">Mode Gelap</span>
-      <span className="hidden dark:inline">Mode Terang</span>
-    </button>
+      {gelap ? "Mode Terang" : "Mode Gelap"}
+    </Button>
   );
 }
-

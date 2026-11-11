@@ -2,26 +2,23 @@
 
 import { useState } from "react";
 import ProyekCard from "@/components/ProyekCard";
+import { Button } from "@/components/ui/button";
 
 const daftarKategori = ["Semua", "HTML", "CSS", "JavaScript", "Next.js"];
-const tombolBiasa =
-  "rounded-full border border-utama dark:border-sky-200 px-4 py-1 text-sm font-semibold text-utama dark:text-sky-200";
-const tombolAktif =
-  "rounded-full border border-aksen bg-aksen px-4 py-1 text-sm font-semibold text-white";
 
 export default function FilterProyek({ proyek }) {
   const [kategori, setKategori] = useState("Semua");
   const [kata, setKata] = useState("");
 
   const kataKecil = kata.toLowerCase();
-  const hasil = proyek.filter((p) => { 
+  const hasil = (proyek || []).filter((p) => {
+    const pKategori = p.kategori || "";
     const cocokKategori =
       kategori === "Semua" ||
-      p.kategori === kategori ||
-      p.kategori.toLowerCase().includes(kategori.toLowerCase());
-    const cocokJudul = p.judul.toLowerCase().includes(kataKecil);
-    const cocokDeskripsi =
-      p.deskripsi.toLowerCase().includes(kataKecil);
+      pKategori.toLowerCase() === kategori.toLowerCase() ||
+      (kategori === "Next.js" && pKategori.toLowerCase().includes("next"));
+    const cocokJudul = (p.judul || "").toLowerCase().includes(kataKecil);
+    const cocokDeskripsi = (p.deskripsi || "").toLowerCase().includes(kataKecil);
     const cocokKata = cocokJudul || cocokDeskripsi;
     return cocokKategori && cocokKata;
   });
@@ -30,14 +27,13 @@ export default function FilterProyek({ proyek }) {
     <div className="mt-8">
       <div className="flex flex-wrap gap-2">
         {daftarKategori.map((k) => (
-          <button
+          <Button
             key={k}
-            type="button"
+            variant={kategori === k ? "default" : "outline"}
             onClick={() => setKategori(k)}
-            className={kategori === k ? tombolAktif : tombolBiasa}
           >
             {k}
-          </button>
+          </Button>
         ))}
       </div>
 
@@ -51,33 +47,33 @@ export default function FilterProyek({ proyek }) {
           value={kata}
           onChange={(e) => setKata(e.target.value)}
           placeholder="Contoh: perkalian"
-          className="mt-1 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 p-2 md:w-80"
+          className="mt-1 w-full rounded-lg border border-input bg-card p-2 md:w-80"
         />
         {kata !== "" && (
           <div>
-            <button
-              type="button"
+            <Button
+              variant="link"
               onClick={() => setKata("")}
-              className="mt-2 text-sm font-semibold text-aksen dark:text-red-300 hover:underline"
+              className="mt-2 px-0 text-aksen"
             >
               Hapus pencarian
-            </button>
+            </Button>
           </div>
         )}
       </div>
 
-      <p className="mt-4 text-sm text-gray-600 dark:text-gray-400">
-        Menampilkan {hasil.length} dari {proyek.length} proyek
+      <p className="mt-4 text-sm text-muted-foreground">
+        Menampilkan {hasil.length} dari {(proyek || []).length} proyek
       </p>
 
       <div className="mt-6 grid gap-6 md:grid-cols-3">
         {hasil.map((item) => (
-          <ProyekCard key={item.slug} proyek={item} />
+          <ProyekCard key={item.slug || item.id} proyek={item} />
         ))}
       </div>
 
       {hasil.length === 0 && (
-        <p className="mt-6 rounded-xl border border-dashed border-gray-300 dark:border-gray-600 p-6 text-center text-gray-600 dark:text-gray-400">
+        <p className="mt-6 rounded-xl border border-dashed border-input p-6 text-center text-muted-foreground">
           Belum ada proyek yang cocok.
         </p>
       )}
