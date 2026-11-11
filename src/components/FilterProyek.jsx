@@ -14,7 +14,7 @@ export default function FilterProyek({ proyek }) {
   const [kata, setKata] = useState("");
 
   const kataKecil = kata.toLowerCase();
-  const hasil = proyek.filter((p) => {
+  const hasil = proyek.filter((p) => { 
     const cocokKategori =
       kategori === "Semua" ||
       p.kategori === kategori ||
